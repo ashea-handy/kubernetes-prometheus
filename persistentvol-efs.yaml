@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grafana-storage 
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: us-east-1b.fs-$SPECIFIC_ID.efs.us-east-1.amazonaws.com 
+    path: "/"
