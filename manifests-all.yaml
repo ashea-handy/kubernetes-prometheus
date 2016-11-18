@@ -1,10 +1,5 @@
 # Derived from ./manifests
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: monitoring
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -49,7 +44,8 @@ spec:
           mountPath: /var
       volumes:
       - name: grafana-persistent-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: grafana-storage 
 ---
 apiVersion: v1
 data:
